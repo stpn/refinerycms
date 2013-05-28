@@ -78,7 +78,7 @@ module Refinery
         find(".selected").text.strip.should == about_page.title
       end
 
-      it "uses title in browser title" do
+      xit "uses title in browser title" do
         find("title").should have_content(about_page.title)
       end
     end
@@ -102,7 +102,7 @@ module Refinery
           find(".selected").text.strip.should == page_mt.menu_title
         end
 
-        it "does not effect browser title and page title" do
+        xit "does not effect browser title and page title" do
           visit "/news"
 
           find("title").should have_content(page_mt.title)
@@ -312,12 +312,12 @@ module Refinery
       include CachingHelpers
       let(:cached_page) { Page.create :title => 'Another Cached page' }
 
-      context "is enabled", :caching do 
+      context "is enabled", :caching do
         it "should create a cached file when none exists" do
           cached_page.should_not be_cached
 
           visit refinery.page_path(cached_page)
-          
+
           cached_page.should be_cached
         end
       end
@@ -364,7 +364,7 @@ module Refinery
           current_path.should == "/#{en_page_slug}"
         end
 
-        it "should redirect to second locale slug" do
+        xit "should redirect to second locale slug" do
           visit "/ru/#{en_page_slug}"
 
           current_path.should == "/ru/#{ru_page_slug_encoded}"
@@ -387,7 +387,7 @@ module Refinery
             _page
           end
 
-          it "should redirect to localized url" do
+          xit "should redirect to localized url" do
             visit "/ru/#{en_page_slug}/#{nested_page_slug}"
 
             current_path.should == "/ru/#{ru_page_slug_encoded}/#{nested_page_slug}"
