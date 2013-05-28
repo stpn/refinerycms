@@ -36,6 +36,13 @@
 * Fixed page saving bug when default locale was set to something different than `en` or when it was changed after creating some pages. [#2088](https://github.com/refinery/refinerycms/pull/2088). [Philip Arndt](https://github.com/parndt)
 * Moved page preview functionality to its own controller and made it so that you need to be logged in to use it. [#2089](https://github.com/refinery/refinerycms/pull/2089). [Philip Arndt](https://github.com/parndt)
 * Fixed issue which allowed identical slugs to exist after page reordering. [#2092](https://github.com/refinery/refinerycms/pull/2092). [Philip Arndt](https://github.com/parndt)
+* Gave crudify's actions the ability to redirect to a particular page of results when `params[:page]` is supplied to the action. [#1861](https://github.com/refinery/refinerycms/issues/1861). [Philip Arndt](https://github.com/parndt)
+* ActsAsIndexed is no longer a required dependency. Integration is achieved by [refinerycms-acts-as-indexed](https://github.com/refinery/refinerycms-acts-as-indexed) instead. [#2162](https://github.com/refinery/refinerycms/issues/2162). [Philip Arndt](https://github.com/parndt)
+* Added Turkish translation [88f37f2a70c](https://github.com/refinery/refinerycms/commit/88f37f2a70c7504a193987ddd309ae15720f4456) and [c42a909eafa](https://github.com/refinery/refinerycms/commit/c42a909eafac721da5e07b3c796e7a07229231d9). [Aslan Gultekin](https://github.com/whowantstolivefo)
+* Allow user-defined geometries in `image#thumbnail_dimensions`. [#2214](https://github.com/refinery/refinerycms/pull/2214). [Javier Saldana](https://github.com/jassa)
+* Added Ukrainian translation. [#2259](https://github.com/refinery/refinerycms/pull/2259). [Tima Maslyuchenko](https://github.com/timsly)
+* Fixed custom page view template preview. [#2219](https://github.com/refinery/refinerycms/pull/2219). [Jean-Philippe Doyle](https://github.com/j15e)
+
 
 * [See full list](https://github.com/refinery/refinerycms/compare/2-0-stable...master)
 

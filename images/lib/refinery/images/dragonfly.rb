@@ -20,6 +20,7 @@ module Refinery
           app_images.configure_with(:rails) do |c|
             c.datastore.root_path = Refinery::Images.datastore_root_path
             c.url_format = Refinery::Images.dragonfly_url_format
+            c.url_host = Refinery::Images.dragonfly_url_host
             c.secret = Refinery::Images.dragonfly_secret
             c.trust_file_extensions = Refinery::Images.trust_file_extensions
           end
@@ -33,6 +34,10 @@ module Refinery
               # S3 Region otherwise defaults to 'us-east-1'
               s3.region = Refinery::Images.s3_region if Refinery::Images.s3_region
             end
+          end
+
+          if Images.custom_backend?
+            app_images.datastore = Images.custom_backend_class.new(Images.custom_backend_opts)
           end
         end
 
