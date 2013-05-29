@@ -78,8 +78,8 @@ module Refinery
         find(".selected").text.strip.should == about_page.title
       end
 
-      xit "uses title in browser title" do
-        find("title").should have_content(about_page.title)
+      it "uses title in browser title" do
+        page.has_title?(about_page.title)
       end
     end
 
@@ -102,10 +102,10 @@ module Refinery
           find(".selected").text.strip.should == page_mt.menu_title
         end
 
-        xit "does not effect browser title and page title" do
+        it "does not effect browser title and page title" do
           visit "/news"
 
-          find("title").should have_content(page_mt.title)
+          page.has_title?(page_mt.title)
           find("#body_content_title").text.should == page_mt.title
         end
       end
@@ -137,7 +137,7 @@ module Refinery
       it 'should have the browser_title in the title tag' do
         visit '/about-us'
 
-        page.find("title").text == page_bt.title
+        page.has_title?(page_bt.title)
       end
 
       it 'should not effect page title and menu title' do

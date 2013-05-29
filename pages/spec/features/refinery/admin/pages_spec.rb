@@ -136,10 +136,13 @@ module Refinery
           Refinery::Page.count.should == 1
         end
 
-        it "includes menu title field" do
+        it "includes menu title field", :js => true do
           visit refinery.new_admin_page_path
 
           fill_in "Title", :with => "My first page"
+
+          click_link "toggle_advanced_options"
+
           fill_in "Menu title", :with => "The first page"
 
           click_button "Save"
@@ -580,15 +583,17 @@ module Refinery
               @page = parent_page.children.create :title => 'Child Page'
             end
 
-            specify 'sub page should inherit them' do
+            specify 'sub page should inherit them', :js => true do
               visit refinery.edit_admin_page_path(@page.id)
 
+              click_link 'toggle_advanced_options'
+
               within '#page_layout_template' do
-                page.find('option[value=refinery]').selected?.should eq('selected')
+                page.find('option[value=refinery]').selected?.should be_true
               end
 
               within '#page_view_template' do
-                page.find('option[value=refinery]').selected?.should eq('selected')
+                page.find('option[value=refinery]').selected?.should be_true
               end
             end
           end
@@ -616,12 +621,12 @@ module Refinery
       describe "with full page caching", :caching do
         include CachingHelpers
         let(:cached_page) { Page.create :title => 'Cached page' }
-        
+
         before do
           cache_page(cached_page)
         end
 
-        describe "creating updating or destroying a page" do 
+        describe "creating updating or destroying a page" do
           it "should clear the page cache" do
             cached_page.should be_cached
 
