@@ -589,11 +589,11 @@ module Refinery
               click_link 'toggle_advanced_options'
 
               within '#page_layout_template' do
-                page.find('option[value=refinery]').selected?.should be_true
+                page.find('option[value=refinery]').should be_selected
               end
 
               within '#page_view_template' do
-                page.find('option[value=refinery]').selected?.should be_true
+                page.find('option[value=refinery]').should be_selected
               end
             end
           end
