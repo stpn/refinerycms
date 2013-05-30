@@ -618,6 +618,11 @@ WYMeditor.editor.prototype.update = function() {
   // get rid of <br /> tag that appears when empty.
   html = html.replace(/^<br\ ?\/?>$/, '')
 
+
+  html = html.replace(/&(lt|gt|quot);/g, function (m, p) { 
+    return (p == "lt")? "<" : (p == "gt") ? ">" : "'";
+  });
+  
   // apply changes/
   $(wym._element).val(html);
   $(wym._box).find(wym._options.htmlValSelector).not('.hasfocus').val(html); //#147
